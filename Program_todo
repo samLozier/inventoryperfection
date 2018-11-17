@@ -1,0 +1,24 @@
+Config file - set local directories, account info, etc ?
+
+Schedule file - Linux cron file that will run the program on a schedule.
+
+
+
+Self.py  - Gets new OH inventory data from a list of stores. assumes that database has Retailer information,
+            including a link for their download file
+        Need:
+            1. Move to PI
+            2. Schedule to run on schedule
+            3. Move variables to a config file to facilitate testing and distribution
+            4. Create a log file for errors?
+    1. Query database for a list of download links from dropbox
+        Need:
+            1. Throw error if issue? Log file?
+            2. Detect if database values are accurate?
+    2. Dropbox API to download files to local folder
+        Need:
+            1. Errors to log file?
+            2. Check that we're downloading newer file?
+    3. PYMSQL - Upload rows from CSV into database
+            1. Datatype errors to log? Different log?
+            2. Detect duplicate rows?
