@@ -10,6 +10,8 @@ Self.py  - Gets new OH inventory data from a list of stores. assumes that databa
             1. Move to PI
             2. Schedule to run on schedule
             3. Move variables to a config file to facilitate testing and distribution
+                configparser?
+
             4. Create a log file for errors?
     1. Query database for a list of download links from dropbox
         Need:

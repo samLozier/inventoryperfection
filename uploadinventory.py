@@ -1,7 +1,12 @@
 def uploadinventory(filename):
     import pymysql
     import csv
-    conn = pymysql.connect(host='192.168.0.40', user='phpmyadmin', passwd='2540qaan', db='inventoryperfection')
+    import config as cfg
+    conn = pymysql.connect(cfg.database_Config['host'],
+                           cfg.database_Config['user'],
+                           cfg.database_Config['password'],
+                           cfg.database_Config['dbname'])
+
 
     with open(filename, encoding='utf-8', errors='ignore') as f:
         print(f)

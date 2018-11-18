@@ -1,11 +1,12 @@
 import glob
 import os
 
+import config as cfg
 from database import database
 from dropboxget import dropboxGetfile
 from uploadinventory import uploadinventory
 
-print('connecting to databse')
+print('connecting to data base')
 links = database()
 print('got links')
 
@@ -20,7 +21,8 @@ for i in links:
     else:
         filename = i
         print('didnt find filename in link string')
-    destination = '/Users/samlozier/Downloads/newfiles/'
+    destination = cfg.destination['destination']
+    print(destination)
 
     try:
         fullpath = os.path.join(destination, filename)
@@ -35,7 +37,7 @@ print('Downloaded all files')
 
 print('updating database')
 
-dirs = '/Users/samlozier/Downloads/newfiles/*.csv'
+dirs = cfg.localdirectory['localdirectory']
 
 for filename in glob.glob(dirs):
 
