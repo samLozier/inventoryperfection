@@ -2,18 +2,18 @@ import glob
 import os
 
 import config as cfg
-from database import database
-from dropboxget import dropboxGetfile
-from uploadinventory import uploadinventory
+from methods import database_getlinks
+from methods import database_uploadcsv
+from methods import dropboxGetfile
 
 print('connecting to data base')
-links = database()
-print('got links')
+links = database_getlinks()
+print('got links from database')
 
 
 #download files from dropbox
 
-print('getting files')
+print('getting files from Dropbox')
 for i in links:
     if '/' in i:
         filename = i.rsplit('/', 1)[1]
@@ -30,7 +30,7 @@ for i in links:
 
     finally:
         print('gotfile')
-print('Downloaded all files')
+print('Downloaded all files from Dropbox')
 
 
 # read csv data into database
@@ -42,9 +42,9 @@ dirs = cfg.localdirectory['localdirectory']
 for filename in glob.glob(dirs):
 
     print(filename)
-    uploadinventory(filename)
+    database_uploadcsv(filename)
 
-print('updated database')
+print('Inventory Update Complete')
 
 
 
